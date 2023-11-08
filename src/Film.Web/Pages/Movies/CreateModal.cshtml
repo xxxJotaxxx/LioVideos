@@ -1,0 +1,65 @@
+﻿@page
+@model Film.Web.Pages.Movies.CreateModalModel
+@using Film.Permissions
+@using Microsoft.AspNetCore.Authorization
+@using Film.Web.Menus
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@using Film.Localization
+@inject IHtmlLocalizer<FilmResource> L
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+
+
+@{
+    Layout = null;
+}
+
+
+<abp-dynamic-form abp-model="Movie">
+    <abp-modal size="Large">
+        <abp-modal-header title="@L["Añadir Movie"].Value"></abp-modal-header>
+        <abp-modal-body>
+@*          <input type="file" name="logo" id="logo" accept=".jpg,.png" />
+            <div class="upload-area docai-upload-file" id="uploadfile">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-inbox" width="100" viewBox="0 0 16 16" height="100">
+                        <path d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4H4.98zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438L14.933 9zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374l3.7-4.625z"></path>
+                    </svg>
+                </div>
+                <div class="docai-text1">Haga clic o arrastre el archivo en esta area para subirlo</div>
+                <div class="docai-text2">Solo formatos <strong>.pgn,.jpg</strong> cuyo tamaño no supere los <strong>10MB</strong>.</div>
+            </div>
+            <div class="text-center pt-4 fw-bold uploadSucces" id="logo_name"></div> *@
+            <abp-form-content />
+        </abp-modal-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</abp-dynamic-form>
+
+
+<script>
+    $(function () {
+
+        $("#uploadfile").click(function () {
+            $("#logo").click();
+        });
+
+        //detecto cuando el dropzone cambia, para añadir el texto y ocultar el input dropzone
+        $('#logo').change(async function (event) {
+            var input = this;
+            if (input.files[0]) {
+                var base64 = await toBase64(input.files[0]);
+                $('#logo_name').html(input.files[0].name);
+                document.getElementById("uploadfile").style.display = "none";
+            }
+        });
+
+        const toBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+        });
+    });
+</script>

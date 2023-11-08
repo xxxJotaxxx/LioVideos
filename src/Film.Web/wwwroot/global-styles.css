@@ -1,0 +1,122 @@
+/* Your Global Styles */
+
+/*:root .lpx-brand-logo {
+    --lpx-logo: url('/images/logo/leptonx/logo-light.png');
+    --lpx-logo-icon: url('/images/logo/leptonx/logo-light-thumbnail.png');
+}*/
+
+/* Datatables */
+.table.dataTable thead th {
+    color: #ffffff
+}
+
+.row-info, .row-edit, .row-delete {
+    cursor: pointer;
+}
+
+
+/* Drop zone upload file*/
+.upload-area {
+    /*width: 70%;*/
+    height: 200px;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    margin: 0 auto;
+    /*margin-top: 100px;*/
+    text-align: center;
+    overflow: auto;
+}
+
+    .upload-area:hover {
+        cursor: pointer;
+    }
+
+    .upload-area h1 {
+        text-align: center;
+        font-weight: normal;
+        font-family: sans-serif;
+        line-height: 50px;
+        color: darkslategray;
+    }
+
+#logo {
+    display: none;
+}
+
+
+.docai-upload-file {
+    display: flex;
+    flex-direction: column;
+    background-color: #f2f2f2;
+}
+
+    .docai-upload-file svg {
+        font-size: 63px;
+        color: #74a4ff;
+        margin-bottom: 20px;
+    }
+
+    .docai-upload-file .docai-text1 {
+        font-size: 15px;
+        color: black;
+    }
+
+    .docai-upload-file .docai-text2 {
+        font-size: 12px;
+        color: gray;
+    }
+
+.docai-upload-list-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px 0px;
+    padding: 2px;
+}
+
+
+.docai-upload-list-logo-icono {
+    flex: 0 0 20px;
+}
+
+.docai-upload-list-logo-button {
+    flex: 0 0 20px;
+    cursor: pointer;
+    display: none;
+}
+
+.docai-upload-list-logo-nombre {
+    flex: 1;
+}
+
+
+.docai-texto-error {
+    color: red;
+}
+
+.uploadSucces {
+    color: forestgreen;
+    font-size: 16px;
+}
+
+
+/* Forms*/
+.form-control {
+    background-color: #ffffff
+}
+
+    .form-control:focus {
+        background-color: #f1f4ff
+    }
+
+
+.lpx-sidebar {
+/*    background-color: blueviolet*/
+}
+
+.lpx-nav-menu .lpx-menu-item-link.selected {
+    background-color: darkslateblue
+}
+.lpx-sidebar-container .lpx-sidebar .lpx-nav .lpx-nav-menu {
+    
+}

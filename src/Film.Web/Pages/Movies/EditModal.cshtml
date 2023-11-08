@@ -1,0 +1,30 @@
+﻿@page
+@model Film.Web.Pages.Movies.EditModalModel
+@using Film.Permissions
+@using Microsoft.AspNetCore.Authorization
+@using Film.Web.Menus
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@using Film.Localization
+@inject IHtmlLocalizer<FilmResource> L
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+
+
+@{
+    Layout = null;
+}
+
+<abp-dynamic-form abp-model="Movie" asp-page="/Movies/EditModal">
+    <abp-modal size="Large">
+        <abp-modal-header title="@L["Editar Movie"].Value"></abp-modal-header>
+        <abp-modal-body>
+            <abp-input asp-for="Id" />
+            <div class="text-center">
+                <img src="@Model.Movie.Logo" height="260" width="200" />
+            </div>
+            <abp-form-content />
+        </abp-modal-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</abp-dynamic-form>
